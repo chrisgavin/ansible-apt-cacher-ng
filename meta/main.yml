@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Chris Gavin <chris@chrisgavin.me>
+  description: An Ansible role to install apt-cacher-ng listening on any port, including privileged ones.
+  license: GPL
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+
+dependencies: []
