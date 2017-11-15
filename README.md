@@ -1,4 +1,6 @@
 # apt-cacher-ng Ansible Role
+[![Build Status](https://travis-ci.org/chrisgavin/ansible-apt-cacher-ng.svg?branch=master)](https://travis-ci.org/chrisgavin/ansible-apt-cacher-ng)
+
 An Ansible role to install apt-cacher-ng listening on any port, including privileged ones.
 
 ## Variables

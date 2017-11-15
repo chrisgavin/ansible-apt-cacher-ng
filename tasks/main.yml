@@ -1,4 +1,9 @@
 ---
+- name: Update Apt cache.
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+
 - name: Install apt-cacher-ng package.
   apt:
     name: apt-cacher-ng

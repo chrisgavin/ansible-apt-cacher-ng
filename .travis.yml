@@ -1,0 +1,11 @@
+---
+services: docker
+
+env:
+  - distro: ubuntu1604
+
+script:
+  - curl https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/ | bash
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

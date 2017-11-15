@@ -1,0 +1,8 @@
+---
+- name: complex-configuration
+  hosts: all
+
+  roles:
+    - role: role_under_test
+      apt_cacher_ng_port: 80
+      apt_cacher_ng_cache_dir: /tmp/put-the-cache-here/
