@@ -3,15 +3,18 @@
   apt:
     name: apt-cacher-ng
     state: present
+  become: true
 
 - name: Create cache data directory.
   file: path={{ apt_cacher_ng_cache_dir }} owner=apt-cacher-ng group=apt-cacher-ng mode=0755 state=directory
+  become: true
 
 - name: Set capabilities on apt-cacher-ng binary.
   capabilities:
     capability: cap_net_bind_service+ep
     path: /usr/sbin/apt-cacher-ng
     state: "{% if apt_cacher_ng_port <= 1024 %}present{% else %}absent{% endif %}"
+  become: true
 
 - name: Set config options.
   lineinfile:
@@ -24,13 +27,16 @@
       line: "Port: {{ apt_cacher_ng_port }}"
     - regexp: "^CacheDir: "
       line: "CacheDir: {{ apt_cacher_ng_cache_dir }}"
+  become: true
   notify:
     - restart_apt-cacher-ng
 
 - name: Remove Debian default apt-cacher-ng configuration.
   file: path=/etc/apt-cacher-ng/zz_debconf.conf state=absent
+  become: true
   notify:
     - restart_apt-cacher-ng
 
 - name: Enable apt-cacher-ng service.
   service: name=apt-cacher-ng state=started enabled=yes
+  become: true
